@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ ! -z $PHP_MEMORY ]
+then
+sed -i 's/memory_limit = 128M/memory_limit = '"$PHP_MEMORY"'/g' /etc/php7/php.ini
+fi
+sed -i 's~127.0.0.1:9000~\/run\/php\/php-fpm.sock~g' /etc/php7/php-fpm.d/www.conf
+sed -i 's~user = nobody~user = nginx~g' /etc/php7/php-fpm.d/www.conf
+sed -i 's~;listen.owner = nobody~listen.owner = nginx~g' /etc/php7/php-fpm.d/www.conf
+sed -i 's~;listen.group = nobody~listen.group = nginx~g' /etc/php7/php-fpm.d/www.conf
+php-fpm7 -F

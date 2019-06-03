@@ -2,7 +2,7 @@ FROM alpine:3.9
 RUN mkdir -p /run/nginx
 RUN mkdir -p /run/php/
 RUN apk update \
-    && apk --no-cache add nginx php-fpm php php-common php-gd php-curl php-intl php-openssl php-phar php-xmlwriter php-tokenizer php-xsl php-mbstring php-zip php-bcmath php-iconv php-soap php7-pear php7-dev supervisor alpine-sdk openssl-dev php-json \
+    && apk --no-cache add nginx php-fpm php php-common php-gd php-curl php-intl php-openssl php-phar php-xmlwriter php-tokenizer php-xsl php-pdo php-mbstring php-zip php-bcmath php-iconv php-soap php7-pear php7-dev supervisor alpine-sdk openssl-dev php-json \
     && rm -rf /var/cache/apk/*
 RUN pecl install mongodb \
     && pecl clear-cache

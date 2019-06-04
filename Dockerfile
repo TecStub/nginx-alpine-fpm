@@ -15,5 +15,6 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/fpm.conf /etc/nginx/conf.d/default.conf
 COPY pub/index.php /var/www/html/pub/index.php
 COPY scripts/. /bin/
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 RUN chown -R nginx:nginx /var/www
 CMD ["/usr/bin/supervisord"]
